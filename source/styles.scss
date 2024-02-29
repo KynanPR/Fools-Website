@@ -1,0 +1,20 @@
+@use 'sass:color';
+
+$colour-primary: color.scale(#000, $lightness: +20%);
+$colour-secondary: color.scale(#fff, $lightness: -20%);
+$colour-highlight: red;
+
+$padding-standard: 10px;
+
+* {
+    box-sizing: border-box;
+    font-family: Lato, Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: $colour-primary;
+}
+
+main {
+    padding: $padding-standard;
+}
