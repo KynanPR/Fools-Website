@@ -3,18 +3,73 @@
 $colour-primary: color.scale(#000, $lightness: +20%);
 $colour-secondary: color.scale(#fff, $lightness: -20%);
 $colour-highlight: red;
+$colour-debug: green;
 
-$padding-standard: 10px;
+$padding__standard: 10px;
+$padding__thin: calc($padding__standard / 2);
+
+$margin__standard: $padding__standard;
+$margin__thin: calc($margin__standard / 2);
+
+@mixin reset-img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+}
 
 * {
     box-sizing: border-box;
     font-family: Lato, Arial, Helvetica, sans-serif;
+    border: 2px solid $colour-debug;
 }
 
 body {
     background-color: $colour-primary;
 }
 
+header {
+    width: 100vw;
+    height: 20vh;
+    background-color: $colour-secondary;
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    grid-template-rows: 100%;
+}
+
+.header__item {
+    padding: 0 $padding__standard;
+}
+
 main {
-    padding: $padding-standard;
+    padding: $padding__standard;
+}
+
+.img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        @include reset-img;
+    }
+}
+
+.socials {
+    grid-column: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+        margin: 0 $margin__thin;
+    }
+}
+
+header > .fools-logo {
+    grid-column: 2;
+}
+
+header > nav {
+    grid-column: 3;
 }
