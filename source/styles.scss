@@ -1,4 +1,5 @@
-@use 'sass:color';
+@use "sass:color";
+@use "sass:list";
 
 $colour-primary: color.scale(#000, $lightness: +20%);
 $colour-secondary: color.scale(#fff, $lightness: -20%);
@@ -12,64 +13,88 @@ $margin__standard: $padding__standard;
 $margin__thin: calc($margin__standard / 2);
 
 @mixin reset-img {
-    display: block;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	margin: auto;
+}
+
+// Takes a number of columns and optionally their widths
+@mixin single-row-grid($number-of-columns, $column-widths: (auto)) {
+	$columns: "";
+	@if (
+		// Check to make sure there is a width for each column
+		list.length($column-widths) !=
+			($number-of-columns) and
+			list.length($column-widths) !=
+			1
+	) {
+		@error "Must be as many column widths as number of columns";
+	} @else if (list.length($column-widths) == 1) {
+		@for $i from 1 through $number-of-columns {
+			$columns: #{$columns} #{$column-widths};
+		}
+	} @else {
+		@for $i from 1 through $number-of-columns {
+			$columns: #{$columns} #{list.nth($column-widths, $i)};
+		}
+	}
+	display: grid;
+	@debug "columns: #{$columns}";
+	grid-template-columns: $columns;
+	grid-template-rows: 100%; // Stops child elements from breaking bounds
 }
 
 * {
-    box-sizing: border-box;
-    font-family: Lato, Arial, Helvetica, sans-serif;
-    border: 2px solid $colour-debug;
+	box-sizing: border-box;
+	font-family: Lato, Arial, Helvetica, sans-serif;
+	border: 2px solid $colour-debug;
 }
 
 body {
-    background-color: $colour-primary;
+	background-color: $colour-primary;
 }
 
 header {
-    width: 100vw;
-    height: 20vh;
-    background-color: $colour-secondary;
-    display: grid;
-    grid-template-columns: 40% 20% 40%;
-    grid-template-rows: 100%;
+	width: 100vw;
+	height: 20vh;
+	background-color: $colour-secondary;
+	@include single-row-grid(3, 2fr 1fr 2fr);
 }
 
 .header__item {
-    padding: 0 $padding__standard;
+	padding: 0 $padding__standard;
 }
 
 main {
-    padding: $padding__standard;
+	padding: $padding__standard;
 }
 
 .img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 100%;
+	max-height: 100%;
 
-    img {
-        @include reset-img;
-    }
+	img {
+		@include reset-img;
+	}
 }
 
 .socials {
-    grid-column: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	grid-column: 1;
+	@include single-row-grid(3);
 
-    div {
-        margin: 0 $margin__thin;
-    }
+	div {
+		margin: 0 $margin__thin;
+	}
 }
 
 header > .fools-logo {
-    grid-column: 2;
+	grid-column: 2;
 }
 
 header > nav {
-    grid-column: 3;
+	grid-column: 3;
 }
