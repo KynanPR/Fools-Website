@@ -37,7 +37,7 @@
 				<ul role="menubar" class="navigation-list">
 					<li role="presentation">
 						<a
-							href="#Home"
+							href="#home-section"
 							role="menuitem"
 							class="navigation-list__item navigation-list__item--active"
 							>home</a
@@ -46,7 +46,7 @@
 					<li role="presentation">
 						<a href="#about" role="menuitem" class="navigation-list__item">about</a>
 					</li>
-					<li>
+					<li role="presentation">
 						<a href="#gallery" role="menuitem" class="navigation-list__item">gallery</a>
 					</li>
 					<li role="presentation">
@@ -58,24 +58,42 @@
 		<div id="side-bars__left" class="side-bars"></div>
 		<!-- Main Content -->
 		<main>
-			<div class="home-section">
-				<h1>Fool's Gambit Morris</h1>
-				<p>Blurby stuff</p>
+			<div class="home-section" id="home">
+				<h1 class="home-section__title">Fool's Gambit Morris</h1>
+				<p class="home-section__text">Blurby stuff</p>
+				<div class="home-section__photo img-container" id="team-photo">
+					<img src="assets\img\team-photo_temp.jpg" alt="Team Photo" />
+				</div>
 			</div>
-			<div class="about-section">
-				<h2>Who We Are</h2>
-				<p>We are a team that does dancing and all that kinda stuff</p>
-				<h2>What We Do</h2>
-				<p>We still do dancing and stuff..</p>
+			<div class="about-section" id="about">
+				<h2 class="about-section__title" id="about-section__title--1">Who We Are</h2>
+				<p class="about-section__text" id="about-section__text--1">
+					We are a team that does dancing and all that kinda stuff
+				</p>
+				<h2 class="about-section__title" id="about-section__title--2">What We Do</h2>
+				<p class="about-section__text" id="about-section__text--2">
+					We still do dancing and stuff..
+				</p>
+				<div class="about-section__media img-container">
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/bKW7XGUD2NY?si=zng7N6gy00jP-L8b&amp;controls=0"
+						title="Video"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						allowfullscreen
+					></iframe>
+				</div>
 			</div>
-			<div class="gallery-section">
+			<div class="gallery-section" id="gallery">
 				<p>There will be photos here</p>
 				<p>There will be photos here</p>
 				<p>There will be photos here</p>
 				<p>There will be photos here</p>
 				<p>There will be photos here</p>
 			</div>
-			<div class="contact-section">
+			<div class="contact-section" id="contact">
 				<h2>Get In Touch</h2>
 				<p>There will be a form here</p>
 				<p>There will be a form here</p>
