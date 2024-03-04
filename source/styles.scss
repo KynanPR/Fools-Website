@@ -1,12 +1,13 @@
+// Setup - start
 @use "sass:color";
 @use "sass:list";
 
 $colour-primary: color.scale(#000, $lightness: +20%);
-$colour-secondary: color.scale(#fff, $lightness: -20%);
+$colour-secondary: color.scale(#fff, $lightness: -5%);
 $colour-highlight: red;
 $colour-debug: green;
 
-$padding__standard: 10px;
+$padding__standard: 4rem;
 $padding__thin: calc($padding__standard / 2);
 
 $margin__standard: $padding__standard;
@@ -44,32 +45,23 @@ $margin__thin: calc($margin__standard / 2);
 	grid-template-columns: $columns;
 	grid-template-rows: 100%; // Stops child elements from breaking bounds
 }
+// Setup and definitions - end
 
+/* General stylings and helper classes - start */
 * {
 	box-sizing: border-box;
 	font-family: Lato, Arial, Helvetica, sans-serif;
-	border: 2px solid $colour-debug;
+	border: 2px solid $colour-debug; // Debug borders
 }
 
 body {
-	background-color: $colour-primary;
+	/* Setup grid to allow side bars */
+	display: grid;
+	grid: 15vh auto / 1fr 10fr 1fr;
+	grid-template-areas: "header header header" "side-bars__left main side-bars__right";
 }
 
-header {
-	width: 100vw;
-	height: 20vh;
-	background-color: $colour-secondary;
-	@include single-row-grid(3, 2fr 1fr 2fr);
-}
-
-.header__item {
-	padding: 0 $padding__standard;
-}
-
-main {
-	padding: $padding__standard;
-}
-
+/* Standardise images to aid formatting */
 .img-container {
 	display: flex;
 	justify-content: center;
@@ -81,20 +73,85 @@ main {
 		@include reset-img;
 	}
 }
+/* General stylings and helper classes - end */
 
+/* Header stuff - start */
+header {
+	grid-area: header;
+	width: 100vw;
+	height: 15vh;
+	background-color: $colour-secondary;
+	@include single-row-grid(3, 2fr 1fr 2fr);
+}
+
+.header__item {
+	padding: 0 $padding__standard;
+}
+
+/* Social media links container */
 .socials {
 	grid-column: 1;
 	@include single-row-grid(3);
 
 	div {
-		margin: 0 $margin__thin;
+		margin: 15% $margin__thin;
 	}
 }
 
+/* Main logo */
 header > .fools-logo {
 	grid-column: 2;
 }
 
 header > nav {
 	grid-column: 3;
+}
+
+/* Outer nav element */
+.nav {
+	padding: 0 $padding__thin;
+	@include single-row-grid(1);
+}
+
+/* Inner ul element */
+.navigation-list {
+	grid-column: 1;
+	width: 100%;
+	padding-inline-start: 0;
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	li {
+		display: inline-block;
+
+		a {
+			font-variant: small-caps;
+			font-weight: 800;
+			font-size: 2rem;
+		}
+	}
+}
+/* Header stuff - end */
+
+/* Side bars - start */
+.side-bars {
+	background-color: $colour-secondary;
+}
+
+#side-bars__left {
+	grid-area: side-bars__left;
+}
+
+#side-bars__right {
+	grid-area: side-bars__right;
+}
+/* Side bars - end */
+
+main {
+	grid-area: main;
+	grid-column: 2;
+	padding: $padding__standard;
 }
