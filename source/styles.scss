@@ -2,9 +2,9 @@
 @use "sass:color";
 @use "sass:list";
 
-$colour-primary: color.scale(#000, $lightness: +20%);
-$colour-secondary: color.scale(#fff, $lightness: -5%);
-$colour-highlight: red;
+$colour-primary: #171717;
+$colour-secondary: #dddddd;
+$colour-highlight: #af0502;
 $colour-debug: green;
 
 $padding__standard: 2rem;
