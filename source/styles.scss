@@ -134,7 +134,7 @@ header {
 			}
 
 			a:hover {
-				color: color.adjust($colour-highlight, $saturation: -30);
+				color: color.adjust($colour-highlight, $saturation: -30%);
 			}
 		}
 	}
@@ -166,9 +166,16 @@ header {
 /* Side bars - end */
 
 main {
+	background-color: $colour-primary;
+	color: $colour-secondary;
 	grid-area: main;
 	grid-column: 2;
 	padding: $padding__standard;
+
+	> section {
+		padding-bottom: 1rem;
+		border-bottom: 0.1rem solid $colour-highlight;
+	}
 }
 
 .home-section {
@@ -187,6 +194,7 @@ main {
 	}
 
 	.home-section__text {
+		font-size: x-large;
 		grid-area: text;
 	}
 
@@ -206,6 +214,7 @@ main {
 	}
 
 	.about-section__text {
+		font-size: large;
 	}
 
 	#about-section__title-1 {
