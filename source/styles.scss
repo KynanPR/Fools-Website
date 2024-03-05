@@ -50,7 +50,7 @@ $margin__thin: calc($margin__standard / 2);
 /* General stylings and helper classes - start */
 * {
 	box-sizing: border-box;
-	font-family: Lato, Arial, Helvetica, sans-serif;
+	font-family: "PT Serif", Arial, Helvetica, sans-serif;
 	border: 2px solid $colour-debug; // Debug borders
 }
 
@@ -144,6 +144,10 @@ header {
 .socials {
 	grid-column: 1;
 	@include single-row-grid(3);
+
+	a {
+		margin: 15% $margin__thin;
+	}
 
 	div {
 		margin: 15% $margin__thin;
