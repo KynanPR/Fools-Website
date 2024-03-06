@@ -2,7 +2,7 @@
 @use "sass:color";
 @use "sass:list";
 
-$colour-primary: #171717;
+$colour-primary: #292929;
 $colour-secondary: #dddddd;
 $colour-highlight: #af0502;
 $colour-debug: green;
@@ -183,14 +183,14 @@ main {
 }
 
 .home-section {
-	display: grid;
-	grid: auto auto / 3fr 2fr;
-	grid-template-areas: "title title" "text photo";
-	gap: $margin__thin;
-	margin-bottom: $margin__standard;
+	> div {
+		display: flex;
+		flex-flow: row wrap;
+		gap: $margin__thin;
+		margin-bottom: $margin__standard;
+	}
 
 	.home-section__title {
-		grid-area: title;
 		font-size: 3rem;
 		font-weight: bold;
 		text-align: center;
@@ -199,18 +199,32 @@ main {
 
 	.home-section__text {
 		font-size: x-large;
-		grid-area: text;
+		flex: 1 1 20rem;
+		min-width: fit-content;
+
+		> p {
+			margin-block-start: 0;
+		}
 	}
 
 	.home-section__photo {
-		grid-area: photo;
+		flex-basis: 20rem;
+		flex: 1 1 20rem;
+		min-width: 350px;
 	}
+}
+
+#test-float__text {
+}
+
+#test-float__media {
+	float: right;
 }
 
 .about-section {
 	display: grid;
 	grid: auto auto auto auto / 3fr 2fr;
-	grid-template-areas: "title-1 media" "text-1 media" "title-2 media" "text-2 media";
+	grid-template-areas: "title-1 title-1" "text-1 media-1" "title-2 title-2" "text-2 media-2";
 	margin-bottom: $margin__standard;
 	gap: $margin__thin;
 
@@ -219,21 +233,37 @@ main {
 
 	.about-section__text {
 		font-size: large;
-	}
 
-	#about-section__title-1 {
-	}
-
-	#about-section__text-1 {
-	}
-
-	#about-section__title-2 {
-	}
-
-	#about-section__text-2 {
+		> p {
+			margin-block-start: 0;
+		}
 	}
 
 	.about-section__media {
-		grid-area: media;
+		align-items: flex-start;
+	}
+
+	#about-section__title-1 {
+		grid-area: title-1;
+	}
+
+	#about-section__text-1 {
+		grid-area: text-1;
+	}
+
+	#about-section__title-2 {
+		grid-area: title-2;
+	}
+
+	#about-section__text-2 {
+		grid-area: text-2;
+	}
+
+	#about-section__media-1 {
+		grid-area: media-1;
+	}
+
+	#about-section__media-2 {
+		grid-area: media-2;
 	}
 }
