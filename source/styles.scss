@@ -200,7 +200,6 @@ main {
 	.home-section__text {
 		font-size: x-large;
 		flex: 1 1 20rem;
-		min-width: fit-content;
 
 		> p {
 			margin-block-start: 0;
@@ -210,7 +209,12 @@ main {
 	.home-section__photo {
 		flex-basis: 20rem;
 		flex: 1 1 20rem;
-		min-width: 350px;
+		min-width: 250px;
+		overflow: hidden;
+
+		> img {
+			border-radius: 3rem;
+		}
 	}
 }
 
