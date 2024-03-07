@@ -131,10 +131,10 @@ header {
 				font-size: 2rem;
 				text-decoration: none;
 				color: $colour-highlight;
-			}
 
-			a:hover {
-				color: color.adjust($colour-highlight, $saturation: -30%);
+				&:hover {
+					color: color.adjust($colour-highlight, $saturation: -30%);
+				}
 			}
 		}
 	}
@@ -169,6 +169,13 @@ header {
 }
 /* Side bars - end */
 
+@mixin flow-container {
+	display: flex;
+	flex-flow: row wrap;
+	gap: $margin__thin;
+	margin-bottom: $margin__standard;
+}
+
 main {
 	background-color: $colour-primary;
 	color: $colour-secondary;
@@ -179,15 +186,13 @@ main {
 	> section {
 		padding-bottom: 1rem;
 		border-bottom: 0.1rem solid $colour-highlight;
+		margin-bottom: 2rem;
 	}
 }
 
 .home-section {
 	> div {
-		display: flex;
-		flex-flow: row wrap;
-		gap: $margin__thin;
-		margin-bottom: $margin__standard;
+		@include flow-container();
 	}
 
 	.home-section__title {
@@ -218,56 +223,72 @@ main {
 	}
 }
 
-#test-float__text {
-}
-
-#test-float__media {
-	float: right;
-}
-
 .about-section {
-	display: grid;
-	grid: auto auto auto auto / 3fr 2fr;
-	grid-template-areas: "title-1 title-1" "text-1 media-1" "title-2 title-2" "text-2 media-2";
-	margin-bottom: $margin__standard;
-	gap: $margin__thin;
+	> div {
+		@include flow-container();
+		gap: 2.5%;
+		padding-top: 1rem;
 
-	.about-section__title {
+		&:nth-child(2n) {
+			flex-wrap: wrap-reverse;
+		}
 	}
 
-	.about-section__text {
-		font-size: large;
+	// display: grid;
+	// grid: auto auto auto auto / 3fr 2fr;
+	// grid-template-areas: "title-1 title-1" "text-1 media-1" "title-2 title-2" "text-2 media-2";
+	// margin-bottom: $margin__standard;
+	// gap: $margin__thin;
 
-		> p {
+	.about-section__text {
+		flex: 2 1 60%;
+
+		.text__title {
 			margin-block-start: 0;
+			text-align: center;
+		}
+
+		.text__body {
+			text-align: justify;
+			font-size: large;
+
+			> p {
+				margin-block-start: 0;
+			}
 		}
 	}
 
 	.about-section__media {
-		align-items: flex-start;
+		flex: 1 1 37.5%;
+		min-width: 250px;
+		overflow: hidden;
+
+		> * {
+			border-radius: 3rem;
+			width: 100%;
+		}
+		// align-items: flex-start;
 	}
 
 	#about-section__title-1 {
-		grid-area: title-1;
+		// grid-area: title-1;
 	}
 
 	#about-section__text-1 {
-		grid-area: text-1;
 	}
 
 	#about-section__title-2 {
-		grid-area: title-2;
 	}
 
 	#about-section__text-2 {
-		grid-area: text-2;
+		// grid-area: text-2;
 	}
 
 	#about-section__media-1 {
-		grid-area: media-1;
+		// grid-area: media-1;
 	}
 
 	#about-section__media-2 {
-		grid-area: media-2;
+		// grid-area: media-2;
 	}
 }
