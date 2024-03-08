@@ -50,7 +50,7 @@ $margin__thin: calc($margin__standard / 2);
 /* General stylings and helper classes - start */
 * {
 	box-sizing: border-box;
-	font-family: "PT Serif", Arial, Helvetica, sans-serif;
+	font-family: "PT Serif", serif;
 	border: 2px solid $colour-debug; // Debug borders
 }
 
@@ -121,6 +121,31 @@ body {
 
 	.polaroid__caption {
 		grid-area: caption;
+		padding-left: $padding__thin;
+		padding-right: $padding__thin;
+		padding-bottom: $padding__thin;
+		padding-top: 0;
+
+		p {
+			margin-block: 0 0;
+			text-align: justify;
+			font-size: xx-large;
+			font-family: "Permanent Marker", cursive;
+			color: black;
+
+			&:nth-child(1) {
+				rotate: #{calc(random($limit: 20) - 10)}deg;
+			}
+			&:nth-child(2) {
+				rotate: #{calc(random($limit: 20) - 10)}deg;
+			}
+			&:nth-child(3) {
+				rotate: #{calc(random($limit: 20) - 10)}deg;
+			}
+			&:nth-child(4) {
+				rotate: #{calc(random($limit: 20) - 10)}deg;
+			}
+		}
 	}
 }
 /* General stylings and helper classes - end */

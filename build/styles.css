@@ -1,0 +1,262 @@
+/* General stylings and helper classes - start */
+* {
+  box-sizing: border-box;
+  font-family: "PT Serif", serif;
+  border: 2px solid green;
+}
+
+body {
+  /* Setup grid to allow side bars */
+  display: grid;
+  grid: 15vh auto/1fr 10fr 1fr;
+  grid-template-areas: "header header header" "side-bars__left main side-bars__right";
+}
+
+/* Standardise images to aid formatting */
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  max-height: 100%;
+}
+.img-container img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+.polaroid {
+  /* Polaroid is 3.5" x 4.2"
+  3.5 : 4.2 = 5 : 6 */
+  aspect-ratio: 5/6;
+  display: grid;
+  /* Border around photo 0.2"
+  Photo is 3.1"
+  Leaving 0.7" at the bottom for caption (not including the bottom photo border)
+  Turning these into fractions of width/height whilst keeping the resulting
+  absolute values equal results in the following abbomination - I'm sorry
+  2/42 + 31/42 + 2/42 + 7/42 = 42/42-> Rows = height = 4.2" = 42units
+  2/35 + 31/35 + 2/35 = 35/35 -> Columns = widths = 3.5" = 35units
+  42 * 35 = 1470
+  70/1470 + 1085/1470 + 70/1470 + 245/1470 = 1470/1470  -> Rows
+  84/1470  + 1302/1470 + 84/1470 = 1470/1470 -> Columns
+   */
+  grid-template-rows: 70fr 1085fr 70fr 245fr;
+  grid-template-columns: 84fr 1302fr 84fr;
+  grid-template-areas: "padding__top padding__top padding__top" "padding__left photo padding__right" "padding__bottom padding__bottom padding__bottom" "caption caption caption";
+  background-color: whitesmoke;
+  position: fixed;
+  top: 20vh;
+  right: 20vw;
+  border: 2px solid green;
+  width: 500px;
+}
+.polaroid * {
+  border: 2px solid green;
+}
+.polaroid .polaroid__photo {
+  grid-area: photo;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.polaroid .polaroid__photo img {
+  height: 100%;
+  object-fit: cover;
+}
+.polaroid .polaroid__caption {
+  grid-area: caption;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 0;
+}
+.polaroid .polaroid__caption p {
+  margin-block: 0 0;
+  text-align: justify;
+  font-size: xx-large;
+  font-family: "Permanent Marker", cursive;
+  color: black;
+}
+.polaroid .polaroid__caption p:nth-child(1) {
+  rotate: -6deg;
+}
+.polaroid .polaroid__caption p:nth-child(2) {
+  rotate: -2deg;
+}
+.polaroid .polaroid__caption p:nth-child(3) {
+  rotate: 0deg;
+}
+.polaroid .polaroid__caption p:nth-child(4) {
+  rotate: 6deg;
+}
+
+/* General stylings and helper classes - end */
+/* Header stuff - start */
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  border-bottom: 0.44rem solid #af0502;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
+  grid-area: header;
+  background-color: #dddddd;
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-rows: 100%;
+  /* Main logo */
+  /* Outer nav element */
+  /* Inner ul element */
+}
+header .header__item {
+  padding: 0 2rem;
+}
+header .fools-logo {
+  grid-column: 2;
+}
+header .fools-logo img {
+  padding: 0.5rem 0;
+}
+header nav {
+  grid-column: 3;
+}
+header .nav {
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 100%;
+}
+header .navigation-list {
+  grid-column: 1;
+  width: 100%;
+  padding-inline-start: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+header .navigation-list li {
+  display: inline-block;
+}
+header .navigation-list li a {
+  font-variant: small-caps;
+  font-weight: 800;
+  font-size: 2rem;
+  text-decoration: none;
+  color: #af0502;
+}
+header .navigation-list li a:hover {
+  color: #941f1d;
+}
+
+/* Social media links container */
+.socials {
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: 100%;
+}
+.socials a {
+  margin: 15% 1rem;
+}
+.socials div {
+  margin: 15% 1rem;
+}
+
+/* Header stuff - end */
+/* Side bars - start */
+.side-bars {
+  background-color: #dddddd;
+}
+
+#side-bars__left {
+  grid-area: side-bars__left;
+}
+
+#side-bars__right {
+  grid-area: side-bars__right;
+}
+
+/* Side bars - end */
+main {
+  background-color: #292929;
+  color: #dddddd;
+  grid-area: main;
+  grid-column: 2;
+  padding: 2rem;
+}
+main > section {
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem solid #af0502;
+  margin-bottom: 2rem;
+}
+
+.home-section > div {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.home-section .home-section__title {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  margin-block-start: 0;
+}
+.home-section .home-section__text {
+  font-size: x-large;
+  flex: 1 1 20rem;
+}
+.home-section .home-section__text > p {
+  margin-block-start: 0;
+}
+.home-section .home-section__photo {
+  flex-basis: 20rem;
+  flex: 1 1 20rem;
+  min-width: 250px;
+  overflow: hidden;
+}
+.home-section .home-section__photo > img {
+  border-radius: 3rem;
+}
+
+.about-section > div {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  gap: 2.5%;
+  padding-top: 1rem;
+}
+.about-section > div:nth-child(2n) {
+  flex-wrap: wrap-reverse;
+}
+.about-section .about-section__text {
+  flex: 2 1 60%;
+}
+.about-section .about-section__text .text__title {
+  margin-block-start: 0;
+  text-align: center;
+}
+.about-section .about-section__text .text__body {
+  text-align: justify;
+  font-size: large;
+}
+.about-section .about-section__text .text__body > p {
+  margin-block-start: 0;
+}
+.about-section .about-section__media {
+  flex: 1 1 37.5%;
+  min-width: 250px;
+  overflow: hidden;
+}
+.about-section .about-section__media > * {
+  border-radius: 3rem;
+  width: 100%;
+}
+
+/*# sourceMappingURL=styles.css.map */
