@@ -75,48 +75,52 @@ body {
 }
 
 .polaroid {
-	/* Polaroid is 4.2" x 3.5"
-	4.2 : 3.5 = 6 : 5 */
-	aspect-ratio: 6 / 5;
+	/* Polaroid is 3.5" x 4.2"
+	3.5 : 4.2 = 5 : 6 */
+	aspect-ratio: 5 / 6;
 	display: grid;
 	/* Border around photo 0.2"
 	Photo is 3.1"
 	Leaving 0.7" at the bottom for caption (not including the bottom photo border)
 	Turning these into fractions of width/height whilst keeping the resulting
 	absolute values equal results in the following abbomination - I'm sorry
+	2/42 + 31/42 + 2/42 + 7/42 = 42/42-> Rows = height = 4.2" = 42units
+	2/35 + 31/35 + 2/35 = 35/35 -> Columns = widths = 3.5" = 35units
+	42 * 35 = 1470
+	70/1470 + 1085/1470 + 70/1470 + 245/1470 = 1470/1470  -> Rows
+	84/1470  + 1302/1470 + 84/1470 = 1470/1470 -> Columns
 	 */
-	grid-template-rows: 70fr 1085fr 70fr 84fr;
+	grid-template-rows: 70fr 1085fr 70fr 245fr;
 	grid-template-columns: 84fr 1302fr 84fr;
-	grid-template-areas: "padding__top padding__top padding__top" "padding__left photo padding_right" "padding__bottom padding__bottom padding__bottom" "caption caption caption";
-	// grid: 2fr 31fr 2fr 7fr / 2fr 31fr 2fr / "padding padding padding" "padding photo padding" "padding padding padding" "caption caption caption";
+	grid-template-areas: "padding__top padding__top padding__top" "padding__left photo padding__right" "padding__bottom padding__bottom padding__bottom" "caption caption caption";
+	background-color: whitesmoke;
+
+	position: fixed;
+	top: 20vh;
+	right: 20vw;
+
+	border: 2px solid $colour-debug;
+	width: 500px;
+
+	* {
+		border: 2px solid $colour-debug;
+	}
 
 	.polaroid__photo {
 		grid-area: photo;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+
+		img {
+			height: 100%;
+			object-fit: cover;
+		}
 	}
 
 	.polaroid__caption {
 		grid-area: caption;
-	}
-
-	.polaroid__padding {
-		width: 100%;
-		height: 100%;
-	}
-
-	.padding__top {
-		grid-area: padding__top;
-	}
-
-	.padding__left {
-		grid-area: padding__left;
-	}
-
-	.padding__right {
-		grid-area: padding__right;
-	}
-
-	.padding__bottom {
-		grid-area: padding__bottom;
 	}
 }
 /* General stylings and helper classes - end */

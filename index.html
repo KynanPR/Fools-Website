@@ -14,6 +14,7 @@
 		href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
 		rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="build/styles.css" />
+	<script src="source\scripts.js"></script>
 </head>
 
 <body>
@@ -43,8 +44,7 @@
 		<nav class="header__item nav">
 			<ul role="menubar" class="navigation-list">
 				<li role="presentation">
-					<a href="#home-section" role="menuitem"
-						class="navigation-list__item navigation-list__item--active">home</a>
+					<a href="#home" role="menuitem" class="navigation-list__item navigation-list__item--active">home</a>
 				</li>
 				<li role="presentation">
 					<a href="#about" role="menuitem" class="navigation-list__item">about</a>
@@ -115,17 +115,9 @@
 					</div>
 				</div>
 				<div class="polaroid">
-					<div class="polaroid__padding padding__top">
-
+					<div class="polaroid__photo">
+						<img src="assets\img\team-photo_temp.jpg" alt="Team Photo" onload="correctPolaroid(this)" />
 					</div>
-					<div class="polaroid__padding padding__left">
-
-					</div>
-					<div class="polaroid__photo img-container">
-						<img src="assets\img\team-photo_temp.jpg" alt="Team Photo" />
-					</div>
-					<div class="polaroid__padding padding__right"></div>
-					<div class="polaroid__padding padding__bottom"></div>
 					<div class="polaroid__caption">
 						<p>A photo of the team in Evesham</p>
 					</div>
