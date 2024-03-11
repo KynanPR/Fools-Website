@@ -47,14 +47,17 @@ body {
   grid-template-columns: 84fr 1302fr 84fr;
   grid-template-areas: "padding__top padding__top padding__top" "padding__left photo padding__right" "padding__bottom padding__bottom padding__bottom" "caption caption caption";
   background-color: whitesmoke;
-  position: fixed;
-  top: 20vh;
-  right: 20vw;
+  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
   border: 2px solid green;
   width: 500px;
 }
-.polaroid * {
-  border: 2px solid green;
+.polaroid .polaroid__hover-target {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  top: -5%;
+  left: -5%;
+  opacity: 0;
 }
 .polaroid .polaroid__photo {
   grid-area: photo;
@@ -64,6 +67,7 @@ body {
   overflow: hidden;
 }
 .polaroid .polaroid__photo img {
+  filter: sepia(25%);
   height: 100%;
   object-fit: cover;
 }
@@ -77,26 +81,15 @@ body {
 .polaroid .polaroid__caption p {
   margin-block: 0 0;
   text-align: justify;
-  font-size: xx-large;
+  font-size: x-small;
   font-family: "Permanent Marker", cursive;
   color: black;
-}
-.polaroid .polaroid__caption p:nth-child(1) {
-  rotate: -6deg;
-}
-.polaroid .polaroid__caption p:nth-child(2) {
-  rotate: -2deg;
-}
-.polaroid .polaroid__caption p:nth-child(3) {
-  rotate: 0deg;
-}
-.polaroid .polaroid__caption p:nth-child(4) {
-  rotate: 6deg;
 }
 
 /* General stylings and helper classes - end */
 /* Header stuff - start */
 header {
+  z-index: 100;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -253,10 +246,66 @@ main > section {
   flex: 1 1 37.5%;
   min-width: 250px;
   overflow: hidden;
+  position: relative;
 }
 .about-section .about-section__media > * {
   border-radius: 3rem;
   width: 100%;
+}
+.about-section #about-section__media-1 {
+  aspect-ratio: 1/1;
+  overflow: visible;
+}
+.about-section #about-section__media-1 .polaroid {
+  border-radius: 0;
+  position: absolute;
+  width: 40%;
+  transition: all 0.35s;
+  transition-delay: 0.1s;
+}
+.about-section #about-section__media-1 .polaroid img {
+  filter: sepia(25%);
+  transition-property: filter;
+  transition-duration: 0.35s;
+}
+.about-section #about-section__media-1 .polaroid:hover {
+  top: 17.5%;
+  left: 30%;
+  z-index: 5;
+  transform: scale(1.5) rotate(0deg) !important;
+  transition: all 0.35s;
+}
+.about-section #about-section__media-1 .polaroid:hover img {
+  filter: none;
+  transition-property: filter;
+  transition-duration: 0.35s;
+}
+.about-section #about-section__media-1 > :nth-child(1) {
+  top: 5%;
+  left: 20%;
+  z-index: 3;
+  transform: rotate(-15deg);
+}
+.about-section #about-section__media-1 > :nth-child(1) .polaroid__caption > p {
+  rotate: 5deg;
+}
+.about-section #about-section__media-1 > :nth-child(2) {
+  top: 10%;
+  left: 52%;
+  transform: rotate(-5deg);
+  z-index: 1;
+}
+.about-section #about-section__media-1 > :nth-child(2) .polaroid__caption > p {
+  rotate: -6deg;
+}
+.about-section #about-section__media-1 > :nth-child(3) {
+  top: 40%;
+  left: 35%;
+  z-index: 2;
+  transform: rotate(5deg);
+}
+.about-section #about-section__media-1 > :nth-child(3) .polaroid__caption > p {
+  rotate: 6deg;
 }
 
 /*# sourceMappingURL=styles.css.map */

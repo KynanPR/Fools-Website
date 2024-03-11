@@ -95,15 +95,23 @@ body {
 	grid-template-areas: "padding__top padding__top padding__top" "padding__left photo padding__right" "padding__bottom padding__bottom padding__bottom" "caption caption caption";
 	background-color: whitesmoke;
 
-	position: fixed;
-	top: 20vh;
-	right: 20vw;
+	box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
+
+	// position: fixed;
+	// top: 20vh;
+	// right: 20vw;
 
 	border: 2px solid $colour-debug;
 	width: 500px;
 
-	* {
-		border: 2px solid $colour-debug;
+	.polaroid__hover-target {
+		position: absolute;
+		$size-increase: 10%;
+		width: calc(100% + $size-increase);
+		height: calc(100% + $size-increase);
+		top: -#{calc($size-increase / 2)};
+		left: -#{calc($size-increase / 2)};
+		opacity: 0;
 	}
 
 	.polaroid__photo {
@@ -114,6 +122,7 @@ body {
 		overflow: hidden;
 
 		img {
+			filter: sepia(25%);
 			height: 100%;
 			object-fit: cover;
 		}
@@ -129,22 +138,9 @@ body {
 		p {
 			margin-block: 0 0;
 			text-align: justify;
-			font-size: xx-large;
+			font-size: x-small;
 			font-family: "Permanent Marker", cursive;
 			color: black;
-
-			&:nth-child(1) {
-				rotate: #{calc(random($limit: 20) - 10)}deg;
-			}
-			&:nth-child(2) {
-				rotate: #{calc(random($limit: 20) - 10)}deg;
-			}
-			&:nth-child(3) {
-				rotate: #{calc(random($limit: 20) - 10)}deg;
-			}
-			&:nth-child(4) {
-				rotate: #{calc(random($limit: 20) - 10)}deg;
-			}
 		}
 	}
 }
@@ -152,6 +148,7 @@ body {
 
 /* Header stuff - start */
 header {
+	z-index: 100;
 	position: -webkit-sticky;
 	position: sticky;
 	top: 0;
@@ -337,12 +334,12 @@ main {
 		flex: 1 1 37.5%;
 		min-width: 250px;
 		overflow: hidden;
+		position: relative;
 
 		> * {
 			border-radius: 3rem;
 			width: 100%;
 		}
-		// align-items: flex-start;
 	}
 
 	#about-section__title-1 {
@@ -360,7 +357,66 @@ main {
 	}
 
 	#about-section__media-1 {
-		// grid-area: media-1;
+		aspect-ratio: 1 / 1;
+		overflow: visible;
+		.polaroid {
+			border-radius: 0;
+			position: absolute;
+			width: 40%;
+			transition: all 0.35s;
+			transition-delay: 0.1s;
+
+			img {
+				filter: sepia(25%);
+				transition-property: filter;
+				transition-duration: 0.35s;
+			}
+
+			&:hover {
+				top: 17.5%;
+				left: 30%;
+				z-index: 5;
+				transform: scale(1.5) rotate(0deg) !important;
+				transition: all 0.35s;
+				// transition-delay: 0.1;
+
+				img {
+					filter: none;
+					transition-property: filter;
+					transition-duration: 0.35s;
+				}
+			}
+		}
+
+		& > :nth-child(1) {
+			top: 5%;
+			left: 20%;
+			z-index: 3;
+			transform: rotate(-15deg);
+			.polaroid__caption > p {
+				rotate: #{calc(random($limit: 20) - 10)}deg;
+			}
+		}
+
+		& > :nth-child(2) {
+			top: 10%;
+			left: 52%;
+			transform: rotate(-5deg);
+			z-index: 1;
+			.polaroid__caption > p {
+				rotate: #{calc(random($limit: 20) - 10)}deg;
+			}
+		}
+
+		& > :nth-child(3) {
+			top: 40%;
+			left: 35%;
+			z-index: 2;
+			transform: rotate(5deg);
+			.polaroid__caption > p {
+				rotate: #{calc(random($limit: 20) - 10)}deg;
+			}
+		}
 	}
 
 	#about-section__media-2 {
