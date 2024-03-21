@@ -434,19 +434,22 @@ main {
 		position: relative;
 
 		.carousel__slides {
-			$slide-size: 40vw;
-			width: calc($slide-size * 5);
+			$slide-width: 40vw;
+			width: $slide-width;
 			height: 100%;
 			display: flex;
 			position: absolute;
-			left: -$slide-size;
+			left: -75%;
 			align-items: center;
 			justify-content: space-evenly;
 
 			margin-block: 0;
 			padding-inline: 0;
 
-			@mixin transition-thing {
+			&::before {
+				position: absolute;
+				visibility: hidden;
+				content: "#{$slide-width}";
 			}
 
 			// $animation-speed: 15s;
@@ -461,8 +464,8 @@ main {
 			// animation: scroll $animation-speed linear infinite;
 
 			@mixin in-transition($direction) {
-				transition: all 1s ease-in-out;
-				transform: translateX($slide-size * $direction);
+				transition: all 5s linear;
+				transform: translateX($slide-width * $direction);
 			}
 
 			.in-transition--left {
@@ -474,10 +477,11 @@ main {
 			}
 
 			.slides__slide {
-				flex: 0 $slide-size;
+				flex: 0 $slide-width;
 				display: block;
 				z-index: 1;
 				visibility: visible;
+
 				// border: 2px solid white;
 				// background-color: $colour-secondary;
 				aspect-ratio: 1 / 1;

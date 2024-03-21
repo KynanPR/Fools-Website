@@ -286,7 +286,7 @@ main > section {
   transform: rotate(-15deg);
 }
 .about-section #about-section__media-1 > :nth-child(1) .polaroid__caption > p {
-  rotate: -1deg;
+  rotate: -8deg;
 }
 .about-section #about-section__media-1 > :nth-child(2) {
   top: 10%;
@@ -295,7 +295,7 @@ main > section {
   z-index: 1;
 }
 .about-section #about-section__media-1 > :nth-child(2) .polaroid__caption > p {
-  rotate: 10deg;
+  rotate: 8deg;
 }
 .about-section #about-section__media-1 > :nth-child(3) {
   top: 40%;
@@ -304,7 +304,7 @@ main > section {
   transform: rotate(5deg);
 }
 .about-section #about-section__media-1 > :nth-child(3) .polaroid__caption > p {
-  rotate: -3deg;
+  rotate: 1deg;
 }
 .gallery-section {
   height: 80vh;
@@ -317,22 +317,27 @@ main > section {
   position: relative;
 }
 .gallery-section .gallery__carousel .carousel__slides {
-  width: 200vw;
+  width: 40vw;
   height: 100%;
   display: flex;
   position: absolute;
-  left: -40vw;
+  left: -75%;
   align-items: center;
   justify-content: space-evenly;
   margin-block: 0;
   padding-inline: 0;
 }
+.gallery-section .gallery__carousel .carousel__slides::before {
+  position: absolute;
+  visibility: hidden;
+  content: "40vw";
+}
 .gallery-section .gallery__carousel .carousel__slides .in-transition--left {
-  transition: all 1s ease-in-out;
+  transition: all 5s linear;
   transform: translateX(-40vw);
 }
 .gallery-section .gallery__carousel .carousel__slides .in-transition--right {
-  transition: all 1s ease-in-out;
+  transition: all 5s linear;
   transform: translateX(40vw);
 }
 .gallery-section .gallery__carousel .carousel__slides .slides__slide {
