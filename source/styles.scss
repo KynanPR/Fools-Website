@@ -102,7 +102,7 @@ body {
 	// right: 20vw;
 
 	border: 2px solid $colour-debug;
-	width: 500px;
+	// width: 500px;
 
 	.polaroid__hover-target {
 		position: absolute;
@@ -432,6 +432,12 @@ main {
 		margin: 0;
 		overflow: hidden;
 		position: relative;
+
+		.carousel__slider {
+			.polaroid {
+				// width: 25vw;
+			}
+		}
 
 		.carousel__slides {
 			$slide-width: 40vw;

@@ -48,7 +48,6 @@ body {
   background-color: whitesmoke;
   box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
   border: 2px solid green;
-  width: 500px;
 }
 .polaroid .polaroid__hover-target {
   position: absolute;
@@ -286,7 +285,7 @@ main > section {
   transform: rotate(-15deg);
 }
 .about-section #about-section__media-1 > :nth-child(1) .polaroid__caption > p {
-  rotate: -8deg;
+  rotate: 0deg;
 }
 .about-section #about-section__media-1 > :nth-child(2) {
   top: 10%;
@@ -295,7 +294,7 @@ main > section {
   z-index: 1;
 }
 .about-section #about-section__media-1 > :nth-child(2) .polaroid__caption > p {
-  rotate: 8deg;
+  rotate: -7deg;
 }
 .about-section #about-section__media-1 > :nth-child(3) {
   top: 40%;
@@ -304,7 +303,7 @@ main > section {
   transform: rotate(5deg);
 }
 .about-section #about-section__media-1 > :nth-child(3) .polaroid__caption > p {
-  rotate: 1deg;
+  rotate: -2deg;
 }
 .gallery-section {
   height: 80vh;
