@@ -40,9 +40,9 @@ let swiper;
 function loadGallery() {
 	const imageDirectory = "assets/img/gallery";
 	const imagePaths = [
+		"assets/img/gallery/team-photo_temp copy 3.jpg",
 		"assets/img/gallery/team-photo_temp.jpg",
 		"assets/img/gallery/team-photo_temp copy 2.jpg",
-		"assets/img/gallery/team-photo_temp copy 3.jpg",
 		"assets/img/gallery/team-photo_temp copy.jpg",
 		"assets/img/gallery/team-photo_temp copy 4.jpg",
 	];
@@ -52,6 +52,7 @@ function loadGallery() {
 
 	swiper = new Swiper(".gallery__carousel", {
 		// cssMode: true,
+		enabled: false,
 		lazy: true,
 		rewind: true,
 		// spaceBetween: 5,
@@ -103,4 +104,5 @@ function loadGallery() {
 	swiper.appendSlide(slides);
 	swiper.appendSlide(slides);
 	swiper.update();
+	imageList.querySelectorAll(".polaroid img").forEach((image) => correctPolaroid(image));
 }
