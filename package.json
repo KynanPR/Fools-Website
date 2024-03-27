@@ -3,6 +3,6 @@
     "sass": "^1.71.1"
   },
   "dependencies": {
-    "tiny-slider": "^2.9.4"
+    "swiper": "^11.0.7"
   }
 }

@@ -285,7 +285,7 @@ main > section {
   transform: rotate(-15deg);
 }
 .about-section #about-section__media-1 > :nth-child(1) .polaroid__caption > p {
-  rotate: 0deg;
+  rotate: 10deg;
 }
 .about-section #about-section__media-1 > :nth-child(2) {
   top: 10%;
@@ -294,7 +294,7 @@ main > section {
   z-index: 1;
 }
 .about-section #about-section__media-1 > :nth-child(2) .polaroid__caption > p {
-  rotate: -7deg;
+  rotate: -1deg;
 }
 .about-section #about-section__media-1 > :nth-child(3) {
   top: 40%;
@@ -303,10 +303,10 @@ main > section {
   transform: rotate(5deg);
 }
 .about-section #about-section__media-1 > :nth-child(3) .polaroid__caption > p {
-  rotate: -2deg;
+  rotate: 2deg;
 }
 .gallery-section {
-  height: 80vh;
+  max-width: 80vw;
 }
 .gallery-section .gallery__carousel {
   width: 100%;
@@ -314,6 +314,9 @@ main > section {
   margin: 0;
   overflow: hidden;
   position: relative;
+}
+.gallery-section .gallery__carousel .carousel__slider .polaroid {
+  width: 30vw;
 }
 .gallery-section .gallery__carousel .carousel__slides {
   width: 40vw;
