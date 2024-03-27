@@ -52,7 +52,6 @@ function loadGallery() {
 
 	swiper = new Swiper(".gallery__carousel", {
 		// cssMode: true,
-		enabled: false,
 		lazy: true,
 		rewind: true,
 		// spaceBetween: 5,
