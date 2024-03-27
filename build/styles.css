@@ -47,7 +47,6 @@ body {
   grid-template-areas: "padding__top padding__top padding__top" "padding__left photo padding__right" "padding__bottom padding__bottom padding__bottom" "caption caption caption";
   background-color: whitesmoke;
   box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
-  border: 2px solid green;
 }
 .polaroid .polaroid__hover-target {
   position: absolute;
@@ -114,9 +113,9 @@ header .fools-logo img {
 }
 header nav {
   grid-column: 3;
+  margin-right: 2rem;
 }
 header .nav {
-  padding: 0 1rem;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 100%;
@@ -285,7 +284,7 @@ main > section {
   transform: rotate(-15deg);
 }
 .about-section #about-section__media-1 > :nth-child(1) .polaroid__caption > p {
-  rotate: 10deg;
+  rotate: -6deg;
 }
 .about-section #about-section__media-1 > :nth-child(2) {
   top: 10%;
@@ -294,7 +293,7 @@ main > section {
   z-index: 1;
 }
 .about-section #about-section__media-1 > :nth-child(2) .polaroid__caption > p {
-  rotate: -1deg;
+  rotate: -2deg;
 }
 .about-section #about-section__media-1 > :nth-child(3) {
   top: 40%;
@@ -303,7 +302,7 @@ main > section {
   transform: rotate(5deg);
 }
 .about-section #about-section__media-1 > :nth-child(3) .polaroid__caption > p {
-  rotate: 2deg;
+  rotate: 4deg;
 }
 .gallery-section {
   max-width: 80vw;

@@ -175,11 +175,11 @@ header {
 
 	nav {
 		grid-column: 3;
+		margin-right: $margin__standard;
 	}
 
 	/* Outer nav element */
 	.nav {
-		padding: 0 $padding__thin;
 		@include single-row-grid(1);
 	}
 
