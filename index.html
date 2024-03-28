@@ -14,10 +14,11 @@
 		href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
 		rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="build/styles.css" />
-	<script src="source\scripts.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="build/styles.css" />
+	<script src="source\scripts.js"></script>
+
 </head>
 
 <body>
@@ -120,35 +121,48 @@
 				</div>
 
 				<div class="about-section__media" id="about-section__media-1">
-					<div class="polaroid">
-						<span class="polaroid__hover-target"></span>
-						<div class="polaroid__photo">
-							<img src="assets\img\team-photo_temp.jpg" alt="Team Photo" onload="correctPolaroid(this)" />
-						</div>
-						<div class="polaroid__caption">
-							<p>A photo of the team in Evesham</p>
-						</div>
-					</div>
-					<div class="polaroid">
-						<span class="polaroid__hover-target"></span>
-						<div class="polaroid__photo">
-							<img src="assets/img/gallery/team-photo_temp copy 3.jpg" alt="Team Photo"
-								onload="correctPolaroid(this)" />
-						</div>
-						<div class="polaroid__caption">
-							<p>A photo of the team in Evesham</p>
-						</div>
-					</div>
-					<div class="polaroid">
-						<span class="polaroid__hover-target"></span>
-						<div class="polaroid__photo">
-							<img src="assets\img\team-photo_temp.jpg" alt="Team Photo" onload="correctPolaroid(this)" />
-						</div>
-						<div class="polaroid__caption">
-							<p>A photo of the team in Evesham</p>
+					<div class="swiper" id="about-section__cards-swiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="polaroid">
+									<!-- <span class="polaroid__hover-target"></span> -->
+									<div class="polaroid__photo">
+										<img src="assets\img\team-photo_temp.jpg" alt="Team Photo"
+											onload="stylePolaroid(this)" />
+									</div>
+									<div class="polaroid__caption">
+										<p>A photo of the team in Evesham</p>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="polaroid">
+									<!-- <span class="polaroid__hover-target"></span> -->
+									<div class="polaroid__photo">
+										<img src="assets/img/gallery/team-photo_temp copy 3.jpg" alt="Team Photo"
+											onload="stylePolaroid(this)" />
+									</div>
+									<div class="polaroid__caption">
+										<p>A photo of the team in Evesham</p>
+									</div>
+								</div>
+							</div>
+							<div class="swiper-slide">
+								<div class="polaroid">
+									<!-- <span class="polaroid__hover-target"></span> -->
+									<div class="polaroid__photo">
+										<img src="assets\img\team-photo_temp.jpg" alt="Team Photo"
+											onload="stylePolaroid(this)" />
+									</div>
+									<div class="polaroid__caption">
+										<p>A photo of the team in Evesham</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
+				<script>loadAboutMedia()</script>
 			</div>
 			<div>
 				<div class="about-section__media img-container" id="about-section__media-2">

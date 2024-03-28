@@ -25,6 +25,18 @@ function loadHeader() {
 	}
 }
 
+function stylePolaroid(polaroidImg) {
+	const polaroidContainer = polaroidImg.parentElement.parentElement;
+	const polaroidCaption = polaroidContainer.querySelector(".polaroid__caption p");
+
+	// Correct image width/height to fit properly
+	correctPolaroid(polaroidImg);
+
+	// Rotate caption a random amount
+	const rotateAmount = Math.random() * 10 - 5; // Produces a random number (not int) between -5 (inclusive) & 5 (exclusive)
+	console.log("rotating polaroid caption");
+	polaroidCaption.style.rotate = `${rotateAmount}deg`;
+}
 function correctPolaroid(img) {
 	const width = img.naturalWidth;
 	const height = img.naturalHeight;
@@ -36,7 +48,27 @@ function correctPolaroid(img) {
 	}
 }
 
-let swiper;
+let aboutSwiper;
+function loadAboutMedia() {
+	aboutSwiper = new Swiper("#about-section__cards-swiper", {
+		// enabled: false,
+		rewind: true,
+		grabCursor: true,
+		initialSlide: 1,
+		effect: "cards",
+		cardsEffect: {
+			perSlideOffset: 25,
+			perSlideRotate: 5,
+		},
+		speed: 500,
+		autoplay: {
+			delay: 5000,
+			pauseOnMouseEnter: true,
+		},
+	});
+}
+
+let gallerySwiper;
 function loadGallery() {
 	const imageDirectory = "assets/img/gallery";
 	const imagePaths = [
@@ -50,11 +82,10 @@ function loadGallery() {
 	const carousel = document.querySelector(".gallery__carousel");
 	const imageList = carousel.querySelector(".carousel__slider");
 
-	swiper = new Swiper(".gallery__carousel", {
-		// cssMode: true,
+	gallerySwiper = new Swiper(".gallery__carousel", {
+		// enabled: false,
 		lazy: true,
 		rewind: true,
-		// spaceBetween: 5,
 		navigation: {
 			nextEl: ".swiper-button-next",
 			prevEl: ".swiper-button-prev",
@@ -69,7 +100,6 @@ function loadGallery() {
 		coverflowEffect: {
 			rotate: 25,
 			depth: 80,
-			// scale: 0.8,
 		},
 		speed: 500,
 		centeredSlides: true,
@@ -85,13 +115,13 @@ function loadGallery() {
 
 	// Create a slide element for each image
 	const slides = imagePaths.map((imagePath) => {
-		const imageCaption = "Placeholder Caption";
+		const imageCaption = imagePath.split("\\").pop().split("/").pop().split(".").splice(0, 1);
 		const imageItem = document.createElement("div");
 		imageItem.classList.add("slider__slide", "swiper-slide");
 		imageItem.innerHTML = `
 			<div class="polaroid">
 				<div class="polaroid__photo">
-					<img src="${imagePath}" alt="Gallery Photo onload="correctPolaroid(this)" />
+					<img src="${imagePath}" alt="Gallery Photo" onload="stylePolaroid(this)"/>
 				</div>
 				<div class="polaroid__caption">
 					<p>${imageCaption}</p>
@@ -100,8 +130,8 @@ function loadGallery() {
 		`;
 		return imageItem;
 	});
-	swiper.appendSlide(slides);
-	swiper.appendSlide(slides);
-	swiper.update();
+	gallerySwiper.appendSlide(slides);
+	gallerySwiper.appendSlide(slides);
+	gallerySwiper.update();
 	imageList.querySelectorAll(".polaroid img").forEach((image) => correctPolaroid(image));
 }

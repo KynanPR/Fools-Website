@@ -1,4 +1,8 @@
 /* General stylings and helper classes - start */
+:root {
+  --swiper-theme-color: #af0502;
+}
+
 * {
   box-sizing: border-box;
   font-family: "PT Serif", serif;
@@ -44,17 +48,9 @@ body {
    */
   grid-template-rows: 70fr 1085fr 70fr 245fr;
   grid-template-columns: 84fr 1302fr 84fr;
-  grid-template-areas: "padding__top padding__top padding__top" "padding__left photo padding__right" "padding__bottom padding__bottom padding__bottom" "caption caption caption";
+  grid-template-areas: "padding__top padding__top padding__top" "padding__left photo padding__right" "caption caption caption" "caption caption caption";
   background-color: whitesmoke;
-  box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
-}
-.polaroid .polaroid__hover-target {
-  position: absolute;
-  width: 110%;
-  height: 110%;
-  top: -5%;
-  left: -5%;
-  opacity: 0;
+  border-radius: 0.5%;
 }
 .polaroid .polaroid__photo {
   grid-area: photo;
@@ -74,10 +70,11 @@ body {
   padding-right: 1rem;
   padding-bottom: 1rem;
   padding-top: 0;
+  min-height: 100%;
 }
 .polaroid .polaroid__caption p {
-  margin-block: 0 0;
-  text-align: justify;
+  transform-origin: top;
+  text-align: center;
   font-size: x-small;
   font-family: "Permanent Marker", cursive;
   color: black;
@@ -180,7 +177,7 @@ main {
   padding: 2rem;
 }
 main > section {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
   border-bottom: 0.1rem solid #af0502;
   margin-bottom: 2rem;
 }
@@ -221,12 +218,18 @@ main > section {
   margin-bottom: 2rem;
   gap: 2.5%;
   padding-top: 1rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 0.1rem solid #505050;
 }
 .about-section > div:nth-child(2n) {
   flex-wrap: wrap-reverse;
 }
+.about-section > div:last-child {
+  padding-bottom: 0rem;
+  border-bottom: none;
+}
 .about-section .about-section__text {
-  flex: 2 1 60%;
+  flex: 2 1 40vw;
 }
 .about-section .about-section__text .text__title {
   margin-block-start: 0;
@@ -240,152 +243,83 @@ main > section {
   margin-block-start: 0;
 }
 .about-section .about-section__media {
-  flex: 1 1 37.5%;
   min-width: 250px;
+  max-width: 800px;
   overflow: hidden;
   position: relative;
 }
-.about-section .about-section__media > * {
+.about-section #about-section__media-1 {
+  flex: 1 1 25vw;
+  overflow: visible;
+  margin-left: 2rem;
+}
+.about-section #about-section__media-1 .polaroid .polaroid__caption p {
+  font-size: medium;
+}
+.about-section #about-section__media-1 .swiper {
+  width: 60%;
+}
+.about-section #about-section__media-2 {
+  flex: 1 1 35vw;
+}
+.about-section #about-section__media-2 > * {
   border-radius: 3rem;
   width: 100%;
 }
-.about-section #about-section__media-1 {
-  aspect-ratio: 1/1;
-  overflow: visible;
-}
-.about-section #about-section__media-1 .polaroid {
-  border-radius: 0;
-  position: absolute;
-  width: 40%;
-  transition: all 0.35s;
-  transition-delay: 0.1s;
-}
-.about-section #about-section__media-1 .polaroid img {
-  filter: sepia(25%);
-  transition-property: filter;
-  transition-duration: 0.35s;
-}
-.about-section #about-section__media-1 .polaroid:hover {
-  top: 17.5%;
-  left: 30%;
-  z-index: 5;
-  transform: scale(1.5) rotate(0deg) !important;
-  transition: all 0.35s;
-}
-.about-section #about-section__media-1 .polaroid:hover img {
-  filter: none;
-  transition-property: filter;
-  transition-duration: 0.35s;
-}
-.about-section #about-section__media-1 > :nth-child(1) {
-  top: 5%;
-  left: 20%;
-  z-index: 3;
-  transform: rotate(-15deg);
-}
-.about-section #about-section__media-1 > :nth-child(1) .polaroid__caption > p {
-  rotate: -6deg;
-}
-.about-section #about-section__media-1 > :nth-child(2) {
-  top: 10%;
-  left: 52%;
-  transform: rotate(-5deg);
-  z-index: 1;
-}
-.about-section #about-section__media-1 > :nth-child(2) .polaroid__caption > p {
-  rotate: -2deg;
-}
-.about-section #about-section__media-1 > :nth-child(3) {
-  top: 40%;
-  left: 35%;
-  z-index: 2;
-  transform: rotate(5deg);
-}
-.about-section #about-section__media-1 > :nth-child(3) .polaroid__caption > p {
-  rotate: 4deg;
-}
+
 .gallery-section {
   max-width: 80vw;
+  padding-top: 1rem;
+  overflow: hidden;
 }
 .gallery-section .gallery__carousel {
   width: 100%;
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
+  --swiper-navigation-size: 3rem;
 }
-.gallery-section .gallery__carousel .carousel__slider .polaroid {
+.gallery-section .gallery__carousel .swiper-button-next,
+.gallery-section .gallery__carousel .swiper-button-prev {
+  width: auto;
+  height: auto;
+  background-color: rgba(80, 80, 80, 0.9);
+  border-radius: 1rem;
+}
+.gallery-section .gallery__carousel .swiper-button-next:after,
+.gallery-section .gallery__carousel .swiper-button-prev:after {
+  margin: 1rem;
+}
+.gallery-section .gallery__carousel .carousel__slider .swiper-slide-active:hover {
+  z-index: 50;
+}
+.gallery-section .gallery__carousel .carousel__slider .slider__slide .polaroid {
   width: 30vw;
 }
-.gallery-section .gallery__carousel .carousel__slides {
-  width: 40vw;
-  height: 100%;
+.gallery-section .gallery__carousel .carousel__slider .slider__slide .polaroid .polaroid__caption p {
+  font-size: xx-large;
+}
+.gallery-section .gallery__carousel .swiper-pagination {
   display: flex;
-  position: absolute;
-  left: -75%;
+  width: auto;
   align-items: center;
-  justify-content: space-evenly;
-  margin-block: 0;
-  padding-inline: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(80, 80, 80, 0.8);
+  border-radius: 0.75rem;
+  gap: 0.75rem;
+  padding: 0 0.75rem;
+  --swiper-pagination-bullet-inactive-color: #dddddd;
+  --swiper-pagination-bullet-inactive-opacity: 0.7;
 }
-.gallery-section .gallery__carousel .carousel__slides::before {
-  position: absolute;
-  visibility: hidden;
-  content: "40vw";
-}
-.gallery-section .gallery__carousel .carousel__slides .in-transition--left {
-  transition: all 5s linear;
-  transform: translateX(-40vw);
-}
-.gallery-section .gallery__carousel .carousel__slides .in-transition--right {
-  transition: all 5s linear;
-  transform: translateX(40vw);
-}
-.gallery-section .gallery__carousel .carousel__slides .slides__slide {
-  flex: 0 40vw;
-  display: block;
-  z-index: 1;
-  visibility: visible;
-  aspect-ratio: 1/1;
-  will-change: transform;
-}
-.gallery-section .gallery__carousel .carousel__slides .slides__slide .polaroid {
-  border-radius: 0;
-  width: 80%;
-}
-.gallery-section .gallery__carousel .carousel__slides .slides__slide .polaroid img {
-  filter: sepia(25%);
-  transition-property: filter;
-  transition-duration: 0.35s;
-}
-.gallery-section .gallery__carousel .carousel__slides .slides__slide .polaroid:hover img {
-  filter: none;
-  transition-property: filter;
-  transition-duration: 0.35s;
-}
-.gallery-section .gallery__carousel .carousel__prev {
-  z-index: 4;
-  position: absolute;
-  height: 100%;
-  width: 20%;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0);
-  cursor: pointer;
-  padding: 2rem;
-  border: unset;
-  left: 0;
-}
-.gallery-section .gallery__carousel .carousel__next {
-  z-index: 4;
-  position: absolute;
-  height: 100%;
-  width: 20%;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0);
-  cursor: pointer;
-  padding: 2rem;
-  border: unset;
-  right: 0;
+.gallery-section .gallery__carousel .swiper-pagination-bullet {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */
