@@ -2,11 +2,20 @@
 @use "sass:color";
 @use "sass:list";
 
+$breakpoint__: 450px;
+$breakpoint__x-small: 450px;
+$breakpoint__small: 768px;
+$breakpoint__medium: 992px;
+$breakpoint__large: 1200px;
+$breakpoint__x-large: 1700px;
+
 $colour-primary: #292929;
 $colour-secondary: #dddddd;
 $colour-highlight: #af0502;
 $colour-grey: #505050;
 $colour-debug: green;
+
+$text-size: 16px;
 
 $padding__standard: 2rem;
 $padding__thin: calc($padding__standard / 2);
@@ -52,6 +61,11 @@ $margin__thin: calc($margin__standard / 2);
 :root {
 	--swiper-theme-color: #{$colour-highlight};
 }
+
+html {
+	font-size: $text-size;
+}
+
 * {
 	box-sizing: border-box;
 	font-family: "PT Serif", serif;
@@ -61,8 +75,13 @@ $margin__thin: calc($margin__standard / 2);
 body {
 	/* Setup grid to allow side bars */
 	display: grid;
-	grid: 15vh auto / 1fr 10fr 1fr;
-	grid-template-areas: "header header header" "side-bars__left main side-bars__right";
+	grid: 15vh auto / 100vw;
+	grid-template-areas: "header" "main";
+	overflow-x: hidden;
+}
+
+h2 {
+	font-size: 1.7rem;
 }
 
 /* Standardise images to aid formatting */
@@ -128,7 +147,7 @@ body {
 			transform-origin: top;
 			// margin-block: 0 0;
 			text-align: center;
-			font-size: x-small;
+			font-size: 0.7rem;
 			font-family: "Permanent Marker", cursive;
 			color: black;
 		}
@@ -151,7 +170,7 @@ header {
 	@include single-row-grid(3, 2fr 1fr 2fr);
 
 	.header__item {
-		padding: 0 $padding__standard;
+		padding: 0 $padding__thin;
 	}
 
 	/* Main logo */
@@ -181,8 +200,9 @@ header {
 
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
+		justify-content: space-evenly;
 		align-items: center;
+		gap: 0rem $margin__standard;
 
 		li {
 			display: inline-block;
@@ -197,6 +217,9 @@ header {
 				&:hover {
 					color: color.adjust($colour-highlight, $saturation: -30%);
 				}
+				&:visited {
+					color: $colour-highlight;
+				}
 			}
 		}
 	}
@@ -206,9 +229,12 @@ header {
 .socials {
 	grid-column: 1;
 	@include single-row-grid(3);
+	gap: $margin__standard;
+	margin-left: $margin__standard;
 
 	a {
-		margin: 15% $margin__thin;
+		margin: $margin__thin 0;
+		// padding: 0 ;
 	}
 
 	div {
@@ -219,6 +245,7 @@ header {
 
 /* Side bars - start */
 .side-bars {
+	display: none;
 	background-color: $colour-secondary;
 }
 
@@ -233,16 +260,20 @@ header {
 
 @mixin flow-container {
 	display: flex;
-	flex-flow: row wrap;
+	flex-direction: column;
+	@media only screen and (min-width: 992px) {
+		flex-direction: row;
+	}
+	flex-wrap: nowrap;
 	gap: $margin__thin;
 	margin-bottom: $margin__standard;
 }
 
 main {
+	width: 100%;
 	background-color: $colour-primary;
 	color: $colour-secondary;
 	grid-area: main;
-	grid-column: 2;
 	padding: $padding__standard;
 
 	> section {
@@ -265,8 +296,8 @@ main {
 	}
 
 	.home-section__text {
-		font-size: x-large;
-		flex: 1 1 20rem;
+		font-size: 1.4rem;
+		flex: 1 1;
 
 		> p {
 			margin-block-start: 0;
@@ -275,8 +306,9 @@ main {
 
 	.home-section__photo {
 		flex-basis: 20rem;
-		flex: 1 1 20rem;
+		flex: 1 1;
 		min-width: 250px;
+		// max-height: 60vh;
 		overflow: hidden;
 
 		> img {
@@ -288,7 +320,7 @@ main {
 .about-section {
 	> div {
 		@include flow-container();
-		gap: 2.5%;
+		gap: $margin__standard;
 		padding-top: 1rem;
 
 		padding-bottom: 2.5rem;
@@ -305,7 +337,7 @@ main {
 	}
 
 	.about-section__text {
-		flex: 2 1 40vw;
+		flex: 2 1;
 
 		.text__title {
 			margin-block-start: 0;
@@ -314,7 +346,7 @@ main {
 
 		.text__body {
 			text-align: justify;
-			font-size: large;
+			// font-size: large;
 
 			> p {
 				margin-block-start: 0;
@@ -324,7 +356,6 @@ main {
 
 	.about-section__media {
 		min-width: 250px;
-		max-width: 800px;
 		overflow: hidden;
 		position: relative;
 	}
@@ -342,13 +373,15 @@ main {
 	}
 
 	#about-section__media-1 {
-		flex: 1 1 25vw;
+		flex: 1 1;
 		overflow: visible;
 		margin-left: $margin__standard;
+		display: flex;
+		align-items: center;
 		.polaroid {
 			.polaroid__caption {
 				p {
-					font-size: medium;
+					font-size: 1.2rem;
 				}
 			}
 		}
@@ -359,17 +392,16 @@ main {
 	}
 
 	#about-section__media-2 {
-		flex: 1 1 35vw;
+		flex: 1 1;
 		> * {
 			border-radius: 3rem;
-			width: 100%;
 		}
 	}
 }
 
 .gallery-section {
 	// height: 80vh;
-	max-width: 80vw;
+	max-width: 100%;
 	padding-top: $padding__thin;
 	overflow: hidden;
 	.gallery__carousel {
@@ -409,13 +441,13 @@ main {
 					.polaroid__caption {
 						p {
 							@media only screen and (min-width: 1351px) {
-								font-size: xx-large;
+								font-size: 1.7rem;
 							}
 							@media only screen and (min-width: 801px) and (max-width: 1350px) {
-								font-size: large;
+								font-size: 1.5rem;
 							}
 							@media only screen and (min-width: 451px) and (max-width: 800px) {
-								font-size: medium;
+								font-size: 1rem;
 							}
 						}
 					}
@@ -425,11 +457,13 @@ main {
 		.swiper-pagination {
 			$bullet-size: $swiper-ui-base-size;
 			display: flex;
-			width: auto;
+			position: relative;
+			width: max-content;
+			margin: auto;
 			// height: calc($bullet-size * 1.5);
 			align-items: center;
-			left: 50%;
-			transform: translateX(-50%);
+			// left: 50%;
+			// transform: translateX(-50%);
 			background-color: color.adjust($colour-grey, $alpha: -0.2);
 			border-radius: calc($bullet-size / 2);
 			gap: calc($bullet-size / 2);
@@ -449,5 +483,81 @@ main {
 				// margin-bottom: auto;
 			}
 		}
+	}
+}
+.contact-section {
+	.contact-section__title {
+		text-align: center;
+	}
+}
+
+@media only screen and (max-width: $breakpoint__x-small) {
+	html {
+		font-size: 12px;
+	}
+}
+@media only screen and (min-width: calc($breakpoint__x-small + 1px)) {
+	html {
+		font-size: 14px;
+	}
+	.about-section {
+		#about-section__media-1 {
+			.polaroid {
+				.polaroid__caption {
+					p {
+						font-size: 1.4rem;
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (min-width: $breakpoint__small) {
+	html {
+		font-size: 14px;
+	}
+	.about-section {
+		#about-section__media-1 {
+			.polaroid {
+				.polaroid__caption {
+					p {
+						font-size: 2rem;
+					}
+				}
+			}
+		}
+	}
+}
+@media only screen and (min-width: $breakpoint__medium) {
+	html {
+		font-size: 16px;
+	}
+	body {
+		grid: 15vh auto / 8vw 84vw 8vw;
+		grid-template-areas: "header header header" "side-bars__left main side-bars__right";
+	}
+	.side-bars {
+		display: initial;
+	}
+	.about-section {
+		#about-section__media-1 {
+			.polaroid {
+				.polaroid__caption {
+					p {
+						font-size: initial;
+					}
+				}
+			}
+		}
+		#about-section__media-2 {
+			> * {
+				width: 100%;
+			}
+		}
+	}
+}
+@media only screen and (min-width: $breakpoint__large) {
+	html {
+		font-size: 18px;
 	}
 }
