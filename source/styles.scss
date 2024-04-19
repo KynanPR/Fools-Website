@@ -408,7 +408,15 @@ main {
 					width: 30vw;
 					.polaroid__caption {
 						p {
-							font-size: xx-large;
+							@media only screen and (min-width: 1351px) {
+								font-size: xx-large;
+							}
+							@media only screen and (min-width: 801px) and (max-width: 1350px) {
+								font-size: large;
+							}
+							@media only screen and (min-width: 451px) and (max-width: 800px) {
+								font-size: medium;
+							}
 						}
 					}
 				}

@@ -297,8 +297,20 @@ main > section {
 .gallery-section .gallery__carousel .carousel__slider .slider__slide .polaroid {
   width: 30vw;
 }
-.gallery-section .gallery__carousel .carousel__slider .slider__slide .polaroid .polaroid__caption p {
-  font-size: xx-large;
+@media only screen and (min-width: 1351px) {
+  .gallery-section .gallery__carousel .carousel__slider .slider__slide .polaroid .polaroid__caption p {
+    font-size: xx-large;
+  }
+}
+@media only screen and (min-width: 801px) and (max-width: 1350px) {
+  .gallery-section .gallery__carousel .carousel__slider .slider__slide .polaroid .polaroid__caption p {
+    font-size: large;
+  }
+}
+@media only screen and (min-width: 451px) and (max-width: 800px) {
+  .gallery-section .gallery__carousel .carousel__slider .slider__slide .polaroid .polaroid__caption p {
+    font-size: medium;
+  }
 }
 .gallery-section .gallery__carousel .swiper-pagination {
   display: flex;
