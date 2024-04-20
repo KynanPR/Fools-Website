@@ -24,6 +24,16 @@ h2 {
   font-size: 1.7rem;
 }
 
+a {
+  color: #af0502;
+}
+a:hover {
+  color: #7e0200;
+}
+a:visited {
+  color: #e10603;
+}
+
 /* Standardise images to aid formatting */
 .img-container {
   display: flex;
