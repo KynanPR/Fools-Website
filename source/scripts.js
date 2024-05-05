@@ -75,7 +75,7 @@ function loadGallery() {
 		"assets/img/gallery/big smiles now everyone.jpg",
 		"assets/img/gallery/dancing in the sun.jpg",
 		"assets/img/gallery/dancing is tiring.jpg",
-		"assets/img/gallery/France historical double jig.jpg",
+		"assets/img/gallery/historical double jig in france.jpg",
 		"assets/img/gallery/laying a lock at Thiepval.jpg",
 		"assets/img/gallery/Lines!.jpg",
 		"assets/img/gallery/Our battle dance.jpg",
