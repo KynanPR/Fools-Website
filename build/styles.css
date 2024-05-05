@@ -24,6 +24,10 @@ h2 {
   font-size: 1.7rem;
 }
 
+sup {
+  font-size: 65%;
+}
+
 a {
   color: #af0502;
 }
@@ -32,6 +36,10 @@ a:hover {
 }
 a:visited {
   color: #e10603;
+}
+
+.footnote {
+  font-size: 50%;
 }
 
 /* Standardise images to aid formatting */
@@ -232,6 +240,9 @@ main > section {
 }
 .home-section .home-section__text > p {
   margin-block-start: 0;
+}
+.home-section .home-section__text #home-section__text__super-2 {
+  font-size: 30%;
 }
 .home-section .home-section__photo {
   flex-basis: 20rem;

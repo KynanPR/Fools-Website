@@ -84,6 +84,10 @@ h2 {
 	font-size: 1.7rem;
 }
 
+sup {
+	font-size: 65%;
+}
+
 a {
 	color: $colour-highlight;
 	&:hover {
@@ -92,6 +96,10 @@ a {
 	&:visited {
 		color: adjust-color($colour-highlight, $saturation: 0%, $lightness: +10%, $alpha: 1.0);
 	}
+}
+
+.footnote {
+	font-size: 50%;
 }
 
 /* Standardise images to aid formatting */
@@ -311,6 +319,10 @@ main {
 
 		> p {
 			margin-block-start: 0;
+		}
+
+		#home-section__text__super-2 {
+			font-size: 30%;
 		}
 	}
 

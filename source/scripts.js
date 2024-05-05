@@ -72,11 +72,20 @@ let gallerySwiper;
 function loadGallery() {
 	const imageDirectory = "assets/img/gallery";
 	const imagePaths = [
-		"assets/img/gallery/team-photo_temp copy 3.jpg",
-		"assets/img/gallery/team-photo_temp.jpg",
-		"assets/img/gallery/team-photo_temp copy 2.jpg",
-		"assets/img/gallery/team-photo_temp copy.jpg",
-		"assets/img/gallery/team-photo_temp copy 4.jpg",
+		"assets/img/gallery/big smiles now everyone.jpg",
+		"assets/img/gallery/dancing in the sun.jpg",
+		"assets/img/gallery/dancing is tiring.jpg",
+		"assets/img/gallery/France historical double jig.jpg",
+		"assets/img/gallery/laying a lock at Thiepval.jpg",
+		"assets/img/gallery/Lines!.jpg",
+		"assets/img/gallery/Our battle dance.jpg",
+		"assets/img/gallery/Practice Time.jpg",
+		"assets/img/gallery/RTBs.jpg",
+		"assets/img/gallery/Some of our lovely musicians.jpg",
+		"assets/img/gallery/Splitter Practice.jpg",
+		"assets/img/gallery/Spot the Siblings.jpg",
+		"assets/img/gallery/Sticks cross.jpg",
+		"assets/img/gallery/the ring of rememberance.jpg",
 	];
 
 	const carousel = document.querySelector(".gallery__carousel");
