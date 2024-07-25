@@ -91,10 +91,10 @@ sup {
 a {
 	color: $colour-highlight;
 	&:hover {
-		color: adjust-color($colour-highlight, $saturation: +10%, $lightness: -10%, $alpha: 1.0);
+		color: adjust-color($colour-highlight, $saturation: +10%, $lightness: -10%, $alpha: 1);
 	}
 	&:visited {
-		color: adjust-color($colour-highlight, $saturation: 0%, $lightness: +10%, $alpha: 1.0);
+		color: adjust-color($colour-highlight, $saturation: 0%, $lightness: +10%, $alpha: 1);
 	}
 }
 
@@ -149,7 +149,7 @@ a {
 		img {
 			filter: sepia(25%);
 			height: 100%;
-			object-fit: cover;
+			// object-fit: cover;
 		}
 	}
 

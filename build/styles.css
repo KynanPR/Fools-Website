@@ -89,7 +89,6 @@ a:visited {
 .polaroid .polaroid__photo img {
   filter: sepia(25%);
   height: 100%;
-  object-fit: cover;
 }
 .polaroid .polaroid__caption {
   grid-area: caption;
